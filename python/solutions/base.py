@@ -113,7 +113,9 @@ class BaseSolution(Generic[I]):
         """
         input_file = Path(
             # __file__ is the solution base
-            Path(__file__).parent,
+            Path(__file__).parent.parent.parent,
+            # the inputs folder
+            "inputs",
             # the 4-digit year
             str(self.year),
             # padded day folder

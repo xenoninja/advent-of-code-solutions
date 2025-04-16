@@ -23,7 +23,9 @@ if __name__ == "__main__":
     ARGS = PARSER.parse_args()
 
     year_dir = Path("solutions", ARGS.year)
+    input_year_dir = Path(Path(__file__).parent.parent, "inputs", ARGS.year)
     year_dir.mkdir(parents=True, exist_ok=True)
+    input_year_dir.mkdir(parents=True, exist_ok=True)
 
     if ARGS.day is None:
         day = next_day(year_dir) + 1
@@ -34,10 +36,12 @@ if __name__ == "__main__":
         PARSER.error(f"day {day} is not in range [1,25]")
 
     day_dir = Path(year_dir, f"day_{day:02}")
+    input_day_dir = Path(input_year_dir, f"day_{day:02}")
 
     day_dir.mkdir(parents=True, exist_ok=True)
-    Path(day_dir, "input.txt").touch()
-    Path(day_dir, "input.test.txt").touch()
+    input_day_dir.mkdir(parents=True, exist_ok=True)
+    Path(input_day_dir, "input.txt").touch()
+    Path(input_day_dir, "input.test.txt").touch()
 
     notes_path = Path(day_dir, "README.md")
     if not notes_path.exists():
