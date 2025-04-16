@@ -29,9 +29,23 @@ class Solution(StrSplitSolution):
 
         return res
 
-    # @answer(1234)
+    @answer(23177084)
     def part_2(self) -> int:
-        pass
+        input_list = self.input
+        left_list = []
+        count_dict = {}
+        res = 0
+
+        for i in input_list:
+            [a, b] = i.split()
+            left_list.append(int(a))
+            count_dict[int(b)] = count_dict.get(int(b), 0) + 1
+
+        for i in left_list:
+            if i in count_dict:
+                res += count_dict[i] * i
+
+        return res
 
     # @answer((1234, 4567))
     # def solve(self) -> tuple[int, int]:
